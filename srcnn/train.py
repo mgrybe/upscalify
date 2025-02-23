@@ -79,7 +79,7 @@ def main() -> None:
     writer = SummaryWriter(os.path.join("samples", "logs", config.exp_name))
 
     # Initialize the gradient scaler
-    scaler = amp.GradScaler()
+    scaler = amp.GradScaler(config.device)
 
     # Create an IQA evaluation model
     psnr_model = PSNR(config.upscale_factor, False)
