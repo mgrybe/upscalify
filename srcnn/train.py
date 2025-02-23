@@ -323,7 +323,7 @@ def validate(model: nn.Module,
             hr = batch_data["hr"].to(device=config.device, memory_format=torch.channels_last, non_blocking=True)
 
             # Use the generator model to generate a fake sample
-            with torch.cuda.autocast(config.device):
+            with torch.amp.autocast(config.device.type):
                 sr = model(lr)
 
             # Statistical loss value for terminal data output
