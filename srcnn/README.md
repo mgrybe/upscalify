@@ -18,3 +18,9 @@ conda install -c menpo opencv
 !git clone https://github.com/mgrybe/upscalify.git 
 
 python -m tensorboard.main --logdir=~/Downloads/logs
+
+Keeping the size of the image:
+https://www.baeldung.com/cs/convolutional-layer-size
+
+Models:
+https://drive.google.com/drive/folders/1Bq0-k-VxJ68q7_S5Zlq8wncN0IhB6YsC 

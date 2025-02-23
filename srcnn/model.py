@@ -59,3 +59,15 @@ class SRCNN(nn.Module):
 
         nn.init.normal_(self.reconstruction.weight.data, 0.0, 0.001)
         nn.init.zeros_(self.reconstruction.bias.data)
+
+if __name__ == "__main__":
+    model = SRCNN()
+
+    #print(model)
+    #print(model.features)
+    #print(model.map)
+    #print(model.reconstruction)
+
+    image = torch.randn(1, 1, 256, 256)
+    output = model(image)
+    print(output.shape) # torch.Size([1, 1, 256, 256])
