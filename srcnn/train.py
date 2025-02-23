@@ -111,7 +111,7 @@ def main() -> None:
                             os.path.join(results_dir, "last.pth.tar"))
 
 
-def load_dataset() -> tuple[CUDAPrefetcher, CUDAPrefetcher]:
+def load_dataset() -> tuple[DataLoader, DataLoader]:
     # Load train, test and valid datasets
     train_datasets = TrainValidImageDataset(config.train_image_dir, config.image_size, config.upscale_factor, "Train")
     test_datasets = TestImageDataset(config.test_lr_image_dir, config.test_hr_image_dir, config.upscale_factor)
@@ -133,10 +133,11 @@ def load_dataset() -> tuple[CUDAPrefetcher, CUDAPrefetcher]:
                                  persistent_workers=True)
 
     # Place all data on the preprocessing data loader
-    train_prefetcher = CUDAPrefetcher(train_dataloader, config.device)
-    test_prefetcher = CUDAPrefetcher(test_dataloader, config.device)
+    #train_prefetcher = CUDAPrefetcher(train_dataloader, config.device)
+    #test_prefetcher = CUDAPrefetcher(test_dataloader, config.device)
 
-    return train_prefetcher, test_prefetcher
+    #return train_prefetcher, test_prefetcher
+    return train_dataloader, test_dataloader
 
 def load_dataset_cpu() -> tuple[CPUPrefetcher, CPUPrefetcher]:
     # Load train, test and valid datasets

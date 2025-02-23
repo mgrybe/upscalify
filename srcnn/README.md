@@ -16,3 +16,5 @@ conda install -c menpo opencv
 ```
 
 !git clone https://github.com/mgrybe/upscalify.git 
+
+python -m tensorboard.main --logdir=~/Downloads/logs
