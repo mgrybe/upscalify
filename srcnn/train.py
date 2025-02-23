@@ -24,7 +24,7 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 
 import config
-from dataset import CUDAPrefetcher, TrainValidImageDataset, TestImageDataset
+from dataset import CUDAPrefetcher, CPUPrefetcher, TrainValidImageDataset, TestImageDataset
 from image_quality_assessment import PSNR, SSIM
 from model import SRCNN
 
@@ -37,7 +37,7 @@ def main() -> None:
     best_psnr = 0.0
     best_ssim = 0.0
 
-    train_prefetcher, test_prefetcher = load_dataset()
+    train_prefetcher, test_prefetcher = load_dataset() if config.device == 'cuda' else load_dataset_cpu()
     print("Load all datasets successfully")
 
     model = build_model()
@@ -136,6 +136,33 @@ def load_dataset() -> tuple[CUDAPrefetcher, CUDAPrefetcher]:
     # Place all data on the preprocessing data loader
     train_prefetcher = CUDAPrefetcher(train_dataloader, config.device)
     test_prefetcher = CUDAPrefetcher(test_dataloader, config.device)
+
+    return train_prefetcher, test_prefetcher
+
+def load_dataset_cpu() -> tuple[CPUPrefetcher, CPUPrefetcher]:
+    # Load train, test and valid datasets
+    train_datasets = TrainValidImageDataset(config.train_image_dir, config.image_size, config.upscale_factor, "Train")
+    test_datasets = TestImageDataset(config.test_lr_image_dir, config.test_hr_image_dir, config.upscale_factor)
+
+    # Generator all dataloader
+    train_dataloader = DataLoader(train_datasets,
+                                  batch_size=config.batch_size,
+                                  shuffle=True,
+                                  num_workers=config.num_workers,
+                                  pin_memory=True,
+                                  drop_last=True,
+                                  persistent_workers=True)
+    test_dataloader = DataLoader(test_datasets,
+                                 batch_size=1,
+                                 shuffle=False,
+                                 num_workers=1,
+                                 pin_memory=True,
+                                 drop_last=False,
+                                 persistent_workers=True)
+
+    # Place all data on the preprocessing data loader
+    train_prefetcher = CPUPrefetcher(train_dataloader)
+    test_prefetcher = CPUPrefetcher(test_dataloader)
 
     return train_prefetcher, test_prefetcher
 

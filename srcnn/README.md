@@ -6,6 +6,7 @@
 ### Dataset
 
 https://www.kaggle.com/datasets/ll01dm/t91-image-dataset
+https://www.kaggle.com/datasets/ll01dm/set-5-14-super-resolution-dataset?select=Set5 
 
 
 ```
@@ -14,3 +15,4 @@ conda install tqdm h5py matplotlib opencv-python
 conda install -c menpo opencv
 ```
 
+!git clone https://github.com/mgrybe/upscalify.git 
