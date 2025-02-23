@@ -78,7 +78,7 @@ def main() -> None:
     writer = SummaryWriter(os.path.join("samples", "logs", config.exp_name))
 
     # Initialize the gradient scaler
-    scaler = torch.amp.GradScaler(config.device)
+    scaler = torch.amp.GradScaler(config.device.type)
 
     # Create an IQA evaluation model
     psnr_model = PSNR(config.upscale_factor, False)
@@ -247,7 +247,7 @@ def train(model: nn.Module,
         model.zero_grad(set_to_none=True)
 
         # Mixed precision training
-        with torch.amp.autocast(config.device):
+        with torch.amp.autocast(config.device.type):
             sr = model(lr)
             loss = pixel_criterion(sr, hr)
 
