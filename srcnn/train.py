@@ -248,7 +248,7 @@ def train(model: nn.Module,
         model.zero_grad(set_to_none=True)
 
         # Mixed precision training
-        with amp.autocast():
+        with amp.autocast(config.device):
             sr = model(lr)
             loss = pixel_criterion(sr, hr)
 
@@ -324,7 +324,7 @@ def validate(model: nn.Module,
             hr = batch_data["hr"].to(device=config.device, memory_format=torch.channels_last, non_blocking=True)
 
             # Use the generator model to generate a fake sample
-            with amp.autocast():
+            with amp.autocast(config.device):
                 sr = model(lr)
 
             # Statistical loss value for terminal data output
