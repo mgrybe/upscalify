@@ -39,8 +39,8 @@ if mode == "train":
     test_hr_image_dir = "./data/Set5"
 
     image_size = 32
-    batch_size = 16
-    num_workers = 16
+    batch_size = 256
+    num_workers = 12
 
     # Incremental training and migration training
     resume = ""
