@@ -40,7 +40,7 @@ if mode == "train":
 
     image_size = 32
     batch_size = 16
-    num_workers = 4
+    num_workers = 2
 
     # Incremental training and migration training
     resume = ""

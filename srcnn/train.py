@@ -19,7 +19,6 @@ from enum import Enum
 import torch
 from torch import nn
 from torch import optim
-from torch.cuda import amp
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 
@@ -79,7 +78,7 @@ def main() -> None:
     writer = SummaryWriter(os.path.join("samples", "logs", config.exp_name))
 
     # Initialize the gradient scaler
-    scaler = amp.GradScaler(config.device)
+    scaler = torch.cuda.GradScaler(config.device)
 
     # Create an IQA evaluation model
     psnr_model = PSNR(config.upscale_factor, False)
@@ -198,7 +197,7 @@ def train(model: nn.Module,
           pixel_criterion: nn.MSELoss,
           optimizer: optim.SGD,
           epoch: int,
-          scaler: amp.GradScaler,
+          scaler: torch.cuda.GradScaler,
           writer: SummaryWriter) -> None:
     """Training main program
 
@@ -248,7 +247,7 @@ def train(model: nn.Module,
         model.zero_grad(set_to_none=True)
 
         # Mixed precision training
-        with amp.autocast(config.device):
+        with torch.cuda.autocast(config.device):
             sr = model(lr)
             loss = pixel_criterion(sr, hr)
 
@@ -324,7 +323,7 @@ def validate(model: nn.Module,
             hr = batch_data["hr"].to(device=config.device, memory_format=torch.channels_last, non_blocking=True)
 
             # Use the generator model to generate a fake sample
-            with amp.autocast(config.device):
+            with torch.cuda.autocast(config.device):
                 sr = model(lr)
 
             # Statistical loss value for terminal data output
