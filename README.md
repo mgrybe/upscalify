@@ -75,6 +75,10 @@ Paper: [DRCT: Saving Image Super-Resolution away from Information Bottleneck](./
 
 ## Results
 
+### Super-resolution results on the Set5 dataset
+
+#### PSNR and SSIM metrics
+
 | **Method / Metric** | **PSNR (from paper)** | **SSIM (from paper)** | **PSNR (experiment)**                       | **SSIM (experiment)**                       |
 |---------------------|-----------------------|-----------------------|---------------------------------------------|---------------------------------------------|
 | **SwinIR**          | 32.72                 | 0.9021                | <span style="color:green">**32.986**</span> | <span style="color:green">**0.9023**</span> |
@@ -84,3 +88,12 @@ Paper: [DRCT: Saving Image Super-Resolution away from Information Bottleneck](./
 
 **Table 1.** Results of experiments performing 4× super-resolution. *Note: The metrics were calculated using the Set5
 dataset. Green values indicate results exceeding those published in the paper.*
+
+#### Images
+
+| Method  | Image 2                                        | Image 3                                        | Image 4                                        |
+|---------|------------------------------------------------|------------------------------------------------|------------------------------------------------|
+| SwinIR  | <img src="swinir/images/2.png" width="300px">  | <img src="swinir/images/3.png" width="300px">  | <img src="swinir/images/4.png" width="300px">  |
+| SwinFIR | <img src="swinfir/images/2.png" width="300px"> | <img src="swinfir/images/3.png" width="300px"> | <img src="swinfir/images/4.png" width="300px"> |
+| HAT     | <img src="hat/images/2.png" width="300px">     | <img src="hat/images/3.png" width="300px">     | <img src="hat/images/4.png" width="300px">     |
+| DRCT    | <img src="drct/images/2.png" width="300px">    | <img src="drct/images/3.png" width="300px">    | <img src="drct/images/4.png" width="300px">    |
