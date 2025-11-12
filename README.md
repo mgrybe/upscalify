@@ -13,7 +13,7 @@ Paper: [SwinIR: Image Restoration Using Swin Transformer](./papers/2108.10257v1-
 
 #### Training
 
-| Loss                                            | PSNR                                            | SSIM                                            |
+| Loss                                            | PSNR (Set5)                                     | SSIM (Set5)                                     |
 |-------------------------------------------------|-------------------------------------------------|-------------------------------------------------|
 | <img src="swinir/plots/loss.png" width="300px"> | <img src="swinir/plots/psnr.png" width="300px"> | <img src="swinir/plots/ssim.png" width="300px"> |
 
@@ -25,7 +25,7 @@ Paper: [SwinFIR: Revisiting the SwinIR with Fast Fourier Convolution and Improve
 
 #### Training
 
-| Loss                                             | PSNR                                             | SSIM                                             |
+| Loss                                             | PSNR (Set5)                                      | SSIM (Set5)                                      |
 |--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
 | <img src="swinfir/plots/loss.png" width="300px"> | <img src="swinfir/plots/psnr.png" width="300px"> | <img src="swinfir/plots/ssim.png" width="300px"> |
 
@@ -39,7 +39,7 @@ Paper: [HAT: Hybrid Attention Transformer for Image Restoration](./papers/2309.0
 
 ##### 2x Pre-training
 
-| Loss                                            | PSNR                                            | SSIM                                            |
+| Loss                                            | PSNR (Set5)                                     | SSIM (Set5)                                     |
 |-------------------------------------------------|-------------------------------------------------|-------------------------------------------------|
 | <img src="hat/plots/loss_2x.png" width="300px"> | <img src="hat/plots/psnr_2x.png" width="300px"> | <img src="hat/plots/ssim_2x.png" width="300px"> |
 
@@ -47,7 +47,7 @@ Paper: [HAT: Hybrid Attention Transformer for Image Restoration](./papers/2309.0
 
 ##### 4x Fine-tuning
 
-| Loss                                            | PSNR                                            | SSIM                                            |
+| Loss                                            | PSNR (Set5)                                     | SSIM (Set5)                                     |
 |-------------------------------------------------|-------------------------------------------------|-------------------------------------------------|
 | <img src="hat/plots/loss_4x.png" width="300px"> | <img src="hat/plots/psnr_4x.png" width="300px"> | <img src="hat/plots/ssim_4x.png" width="300px"> |
 
@@ -61,7 +61,7 @@ Paper: [DRCT: Saving Image Super-Resolution away from Information Bottleneck](./
 
 ##### 2x Pre-training
 
-| Loss                                             | PSNR                                             | SSIM                                             |
+| Loss                                             | PSNR (Set5)                                      | SSIM (Set5)                                      |
 |--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
 | <img src="drct/plots/loss_2x.png" width="300px"> | <img src="drct/plots/psnr_2x.png" width="300px"> | <img src="drct/plots/ssim_2x.png" width="300px"> |
 
@@ -69,7 +69,7 @@ Paper: [DRCT: Saving Image Super-Resolution away from Information Bottleneck](./
 
 ##### 4x Fine-tuning
 
-| Loss                                             | PSNR                                             | SSIM                                             |
+| Loss                                             | PSNR (Set5)                                      | SSIM (Set5)                                      |
 |--------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
 | <img src="drct/plots/loss_4x.png" width="300px"> | <img src="drct/plots/psnr_4x.png" width="300px"> | <img src="drct/plots/ssim_4x.png" width="300px"> |
 
