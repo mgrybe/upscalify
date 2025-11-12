@@ -1,4 +1,4 @@
-# Upscalify
+# Upscalify (WiP)
 
 This is a repository for my experiments with transformer-based image super-resolution methods for my research project at
 the [Vytautas Magnus University](https://www.vdu.lt/en/).
